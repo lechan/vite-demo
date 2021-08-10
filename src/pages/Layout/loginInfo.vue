@@ -1,14 +1,5 @@
 <template>
     <div class="login-info login-info-manage">
-        <!-- <div class="link-button">
-            <el-tooltip
-                class="manage-tips"
-                effect="dark"
-                content="返回前台"
-                placement="bottom">
-                <router-link to="/mgba"><i class="icon-houtai"></i></router-link>
-            </el-tooltip>
-        </div> -->
         <div class="login-info-wrap">
             <div class="avatar"><i class="icon-User"></i></div>
             <div class="user-info"><span>{{ userName }}</span><i class="icon-xiala"></i></div>
@@ -20,7 +11,7 @@
 </template>
 
 <script>
-import { getLogout } from '@/api/index'
+import { getLogout } from '@/api'
 
 export default {
     props: {
@@ -40,7 +31,7 @@ export default {
     methods: {
         logoutHandler() {
             getLogout().then(res => {
-                if (res.rspcode === 0) {
+                if (res.code === 0) {
                     localStorage.removeItem('bvreportPhoneNum')
                     localStorage.removeItem('bvreportToken')
                     localStorage.removeItem('bvreportUserName')
@@ -53,7 +44,7 @@ export default {
                 } else {
                     this.$message({
                         type: 'error',
-                        message: res.rspdesc
+                        message: res.msg
                     })
                 }
             })

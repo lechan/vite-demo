@@ -19,15 +19,15 @@ const routes = [{
     path: '/manage',
     component: Layout,
     children: [{
-        path: '/inventory/category',
+        path: 'inventory/category',
         name: 'InventoryCategory',
         component: InventoryCategory
     }, {
-        path: '/inventory/product',
+        path: 'inventory/product',
         name: 'InventoryProduct',
         component: InventoryProduct
     }, {
-        path: '/inventory/order',
+        path: 'inventory/order',
         name: 'InventoryOrder',
         component: InventoryOrder
     }]

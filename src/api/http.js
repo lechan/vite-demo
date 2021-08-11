@@ -30,8 +30,7 @@ const showErrorMsg = msg => {
     messageShow &&
     ElMessage({
         type: 'error',
-        message: msg,
-        showClose: true
+        message: msg
     })
     messageShow = false
 }

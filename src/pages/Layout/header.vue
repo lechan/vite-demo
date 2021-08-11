@@ -25,7 +25,7 @@ import LoginInfo from './loginInfo.vue'
         left: 20px;
         width: 160px;
         height: 30px;
-        background: url('../../assets/logo.png') no-repeat center;
+        background: url('../../assets/images/logo.png') no-repeat center;
         background-size: contain;
     }
     .login-info.login-info-manage {

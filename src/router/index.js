@@ -21,6 +21,9 @@ const routes = [{
     name: 'login',
     component: Login
 }, {
+    path: '/',
+    redirect: '/login'
+}, {
     path: '/manage',
     component: Layout,
     children: [{

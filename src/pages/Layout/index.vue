@@ -6,7 +6,7 @@
             <side-nav></side-nav>
         </div>
         <div class="content-wrap">
-            <breadcrumb :list="breadCrumbList"></breadcrumb>
+            <breadcrumb></breadcrumb>
             <div class="content">
                 <router-view></router-view>
             </div>
@@ -15,26 +15,11 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import MainHeader from './header.vue'
 import SideNav from './nav.vue'
-import breadcrumb from './breadcrumb.vue'
+import Breadcrumb from './breadcrumb.vue'
 import MainFooter from './footer.vue'
-
-export default {
-    name: 'Layout',
-    components: {
-        MainHeader,
-        SideNav,
-        breadcrumb,
-        MainFooter
-    },
-    data() {
-        return {
-            breadCrumbList: [{name: '人员管理'}]
-        }
-    }
-}
 </script>
 
 <style lang="scss">

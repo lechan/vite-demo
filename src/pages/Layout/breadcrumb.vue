@@ -1,7 +1,7 @@
 <template>
     <div class="breadcrumb-wrap">
-        <el-breadcrumb separator=">">
-            <i class="icon-address"></i>
+        <el-breadcrumb separator="/">
+            <i class="el-icon-location"></i>
             <el-breadcrumb-item
                 v-for="(item, index) in currentBreadcrumb"
                 :key="index"
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { watch, ref, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { menu } from '@/config'
 const route = useRoute()
@@ -42,6 +42,12 @@ watchEffect(() => {
     vertical-align: middle;
     .el-breadcrumb {
         line-height: 50px;
+    }
+    .el-icon-location {
+        float: left;
+        margin-right: 5px;
+        line-height: 50px;
+        font-size: 16px;
     }
 }
 </style>

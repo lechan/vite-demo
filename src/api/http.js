@@ -16,8 +16,8 @@ const METHOD = {
     DELETE: 'DELETE'
 }
 const HOST = {
-    development: '/damportal',
-    production: '/damportal'
+    development: '/api',
+    production: '/api'
 }
 
 let messageShow = true
@@ -38,11 +38,9 @@ const showErrorMsg = msg => {
 
 window.HOST = HOST
 window.Promise = Promise
-
-Axios.interceptors.request.use( config =>{
-    const qs = getQueryString()
-    const getToken = qs.token
-    const token = window.localStorage.getItem( 'token') || getToken
+Axios.defaults.timeout = 10000
+Axios.interceptors.request.use(config =>{
+    const token = window.localStorage.getItem('token')
     if (token && token !== '') {
         config.headers.token = token
     }
@@ -80,6 +78,7 @@ Axios.interceptors.response.use(res => {
         }
     })
 }, error => {
+    showErrorMsg('网络异常')
     return Promise.reject(error)
 })
 

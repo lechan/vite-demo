@@ -5,14 +5,8 @@
     </header>
 </template>
 
-<script>
-import loginInfo from './loginInfo.vue'
-
-export default {
-    components: {
-        'login-info': loginInfo
-    }
-}
+<script setup>
+import LoginInfo from './loginInfo.vue'
 </script>
 
 <style lang="scss">

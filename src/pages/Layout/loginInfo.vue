@@ -1,56 +1,47 @@
 <template>
-    <div class="login-info login-info-manage">
+    <div class="login-info">
         <div class="login-info-wrap">
-            <div class="avatar"><i class="icon-User"></i></div>
-            <div class="user-info"><span>{{ userName }}</span><i class="icon-xiala"></i></div>
-            <div class="logout-btn">
-                <button @click="logoutHandler"><i class="icon-Signout"></i>退出</button>
-            </div>
+            <el-popover
+                placement="bottom-end"
+                :width="180"
+                trigger="hover"
+            >
+                <template #reference>
+                    <div style="cursor: pointer;">
+                        <div class="avatar"><el-avatar :size="25" icon="el-icon-user-solid"></el-avatar></div>
+                        <div class="user-info"><span>{{ userName }}</span><i class="el-icon-caret-bottom"></i></div>
+                    </div>
+                </template>
+                <div class="logout-btn">
+                    <el-button size="mini" type="primary" icon="el-icon-key" @click="handlePasswordDialog">修改密码</el-button>
+                    <el-button size="mini" type="danger" icon="el-icon-circle-close" @click="handleLogout">退出</el-button>
+                </div>
+            </el-popover>
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
 import { getLogout } from '@/api'
-
-export default {
-    props: {
-        lineColor: {
-            type: String,
-            default: 'black-line'
-        }
-    },
-    data() {
-        return {
-            userName: localStorage.getItem('bvreportUserName'),
-            newNoticeClass: ''
-        }
-    },
-    created() {
-    },
-    methods: {
-        logoutHandler() {
-            getLogout().then(res => {
-                if (res.code === 0) {
-                    localStorage.removeItem('bvreportPhoneNum')
-                    localStorage.removeItem('bvreportToken')
-                    localStorage.removeItem('bvreportUserName')
-                    localStorage.removeItem('unifiedUserId')
-                    setTimeout(() => {
-                        this.$router.replace({
-                            name: 'login'
-                        })
-                    }, 500)
-                } else {
-                    this.$message({
-                        type: 'error',
-                        message: res.msg
-                    })
-                }
+const userName = localStorage.getItem('userName') || '游客'
+const handleLogout = () => {
+    getLogout().then(res => {
+        if (res.code === 0) {
+            localStorage.clear()
+            setTimeout(() => {
+                this.$router.replace({
+                    name: 'login'
+                })
+            }, 500)
+        } else {
+            this.$message({
+                type: 'error',
+                message: res.msg
             })
         }
-    }
+    })
 }
+const handlePasswordDialog = () => {}
 </script>
 
 <style lang="scss">
@@ -72,11 +63,6 @@ export default {
     .login-info-wrap {
         display: inline-block;
         height: 40px;
-        &:hover {
-            .logout-btn {
-                display: block;
-            }
-        }
     }
     .user-info {
         display: inline-block;
@@ -95,19 +81,18 @@ export default {
     }
     .avatar {
         display: inline-block;
-        width: 18px;
-        height: 18px;
+        width: 25px;
+        height: 25px;
         overflow: hidden;
-        border-radius: 50%;
         vertical-align: middle;
         color: #fff;
+        margin-right: 10px;
     }
     .logout-btn {
         position: absolute;
         top: 28px;
         right: 0px;
         z-index: 1;
-        display: none;
         padding: 10px 0px;
         border-radius: 4px;
         font-size: 14px;

@@ -25,8 +25,10 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
 import { menu } from '@/config'
-const activeIndex = menu[0].children[0].url
+const route = useRoute()
+const activeIndex = route.path
 </script>
 <style lang="scss" scoped>
 .header-app-nav {

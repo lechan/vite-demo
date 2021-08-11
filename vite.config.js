@@ -15,7 +15,7 @@ export default defineConfig({
     port: 3000,
     open: true,
     proxy: {
-      '/api': 'http://10.194.4.41:5000'
+      '/api': 'http://192.168.1.1:5000'
     },
     cors: true
   },

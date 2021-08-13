@@ -15,7 +15,7 @@ import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { menu } from '@/config'
 const route = useRoute()
-let currentBreadcrumb = ref([])
+const currentBreadcrumb = ref([])
 watchEffect(() => {
     const currentUrl = route.path
     menu.forEach(item => {

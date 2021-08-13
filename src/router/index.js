@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import NotFound from '../pages/404/index.vue'
-import Login from '../pages/Login/index.vue'
-import Layout from '../pages/Layout/index.vue'
-import InventoryCategory from '../pages/Inventory/Category/index.vue'
-import InventoryProduct from '../pages/Inventory/Product/index.vue'
-import InventoryOrder from '../pages/Inventory/Order/index.vue'
-import ReportKey from '../pages/Report/Key/index.vue'
-import ReportSales from '../pages/Report/Sales/index.vue'
-import SystemOperationLog from '../pages/System/OperationLog/index.vue'
-import SystemPriceLog from '../pages/System/PriceLog/index.vue'
-import SystemUsers from '../pages/System/Users/index.vue'
+const Login = () => import('../pages/Login/index.vue')
+const NotFound = () => import('../pages/404/index.vue')
+const Layout = () => import('../pages/Layout/index.vue')
+const InventoryCategory = () => import('../pages/Inventory/Category/index.vue')
+const InventoryProduct = () => import('../pages/Inventory/Product/index.vue')
+const InventoryOrder = () => import('../pages/Inventory/Order/index.vue')
+const ReportKey = () => import('../pages/Report/Key/index.vue')
+const ReportSales = () => import('../pages/Report/Sales/index.vue')
+const SystemOperationLog = () => import('../pages/System/OperationLog/index.vue')
+const SystemPriceLog = () => import('../pages/System/PriceLog/index.vue')
+const SystemUsers = () => import('../pages/System/Users/index.vue')
 
 const routes = [{
     path: '/:pathMatch(.*)*',

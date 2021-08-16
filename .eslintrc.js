@@ -1,62 +1,46 @@
-module.exports = {
-    parser: 'vue-eslint-parser',
-    parserOptions: {
-        parser: '@typescript-eslint/parser',
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true
-        }
+{
+    "root": true,
+        "env": {
+        "node": true
     },
-    extends: [
-        'plugin:vue/vue3-recommended',
-        'plugin:@typescript-eslint/recommended',
-        'prettier/@typescript-eslint',
-        'plugin:prettier/recommended'
+    "extends": [
+        "plugin:vue/vue3-essential",
+        "@vue/standard"
     ],
-    rules: {
-        '@typescript-eslint/ban-ts-ignore': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/no-empty-function': 'off',
-        'vue/custom-event-name-casing': 'off',
-        'no-use-before-define': 'off',
-        // 'no-use-before-define': [
-        //   'error',
-        //   {
-        //     functions: false,
-        //     classes: true,
-        //   },
-        // ],
-        '@typescript-eslint/no-use-before-define': 'off',
-        // '@typescript-eslint/no-use-before-define': [
-        //   'error',
-        //   {
-        //     functions: false,
-        //     classes: true,
-        //   },
-        // ],
-        '@typescript-eslint/ban-ts-comment': 'off',
-        '@typescript-eslint/ban-types': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-unused-vars': [
-            'error',
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
+    "rules": {
+        "arrow-parens": 0,
+        "generator-star-spacing": 0,
+        "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+        "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "space-before-function-paren": 0,
+        "eol-last": 0,
+        "no-useless-escape": "off",
+        "max-len": [
+            2,
+            200,
+            4,
             {
-            argsIgnorePattern: '^h$',
-            varsIgnorePattern: '^h$'
+                "ignoreUrls": true
             }
         ],
-        'no-unused-vars': [
-            'error',
+        "prefer-const": [
+            "error",
             {
-            argsIgnorePattern: '^h$',
-            varsIgnorePattern: '^h$'
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": false
             }
         ],
-        'space-before-function-paren': 'off',
-        quotes: ['error', 'single'],
-        'comma-dangle': ['error', 'never']
+        "guard-for-in": "error"
     }
-};
+}

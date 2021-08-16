@@ -1,25 +1,13 @@
 <template>
     <footer class="footer">
-        <p :class="color">
+        <p>
             &copy; {{ year }} 版权所有
         </p>
     </footer>
 </template>
 
-<script type="text/ecmascript-6">
-export default {
-    props: {
-        color: {
-            type: String,
-            default: 'black'
-        }
-    },
-    computed: {
-        year() {
-            return new Date().getFullYear()
-        }
-    }
-}
+<script setup>
+const year = new Date().getFullYear()
 </script>
 
 <style lang="scss">
